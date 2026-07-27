@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - BloodLife</title>
+  <link rel="stylesheet" href="../CSS/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+
+</head>
+<body>
+  <!-- ===================== Title bar: hamburger (left) / logo (center) / auth-or-avatar (right) ===================== -->
+  <div class="title-bar">
+    <div class="hamburger-container">
+      <button id="menuBtn" class="hamburger" aria-label="Toggle menu" aria-controls="mySidebar" aria-expanded="false">
+        <span class="hamburger-inner">☰</span>
+      </button>
+    </div>
+
+    <div class="title-text">
+      <i class="fas fa-tint blood-icon"></i> BloodLife
+    </div>
+
+    <div class="title-bar-right">
+      <div class="auth-buttons" id="authButtons">
+        <button id="loginBtn"><i class="fas fa-sign-in-alt"></i> <span>Login</span></button>
+        <button id="signupBtn"><i class="fas fa-user-plus"></i> <span>Sign Up</span></button>
+      </div>
+
+      <div class="profile-menu" id="profileMenu">
+        <button id="profileAvatar" class="profile-avatar" aria-haspopup="true" aria-expanded="false" aria-label="Open profile menu">U</button>
+        <div class="dropdown-menu" id="dropdownMenu" role="menu">
+          <div class="dropdown-header">
+            <div class="dropdown-name" id="dropdownName">User Name</div>
+            <div class="dropdown-email" id="dropdownEmail">user@email.com</div>
+          </div>
+          <button id="dropdownDashboard" role="menuitem"><i class="fas fa-tachometer-alt"></i> Dashboard</button>
+          <a href="profile.html" role="menuitem"><i class="fas fa-user"></i> My Profile</a>
+          <button id="logoutItem" class="logout-item" role="menuitem"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== Sidebar — all navigation lives here ===================== -->
+  <nav id="mySidebar" class="sidebar" role="navigation" aria-hidden="true">
+    <button id="closeSidebarBtn" aria-label="Close sidebar" class="close-btn">&times;</button>
+    <div class="sidebar-brand"><i class="fas fa-tint blood-icon"></i> BloodLife</div>
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="register.html"><i class="fas fa-user-plus"></i> Register as Donor</a></li>
+      <li><a href="f_d.html"><i class="fas fa-search"></i> Find Donor</a></li>
+      <li><a href="e_a.html"><i class="fas fa-ambulance"></i> Emergency Request</a></li>
+      <li><a href="about_us.html"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a href="contact_us.html"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <ul id="sidebarLoggedOut">
+      <li><a href="login.html" id="sidebarLoginLink"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+      <li><a href="register.html" id="sidebarSignupLink"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+    </ul>
+    <ul id="sidebarLoggedIn" style="display:none;">
+      <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+      <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+      <li><a href="#" id="sidebarLogoutLink" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-shell">
+    <div class="page-header">
+      <h1>Contact Us</h1>
+      <p>Have questions or need assistance? We're here to help.</p>
+    </div>
+    <div class="content-block">
+      <p>Have questions or need assistance? Reach out to us! We're here to help with your queries about blood donation or our platform.</p>
+      <p>
+        <strong>Email:</strong> support@bloodlife.com<br>
+        <strong>Phone:</strong> +91-98765-43210<br>
+        <strong>Address:</strong> 123, Anna Salai, Chennai, Tamil Nadu, India - 600002
+      </p>
+      <p><strong>Note:</strong> For urgent blood requests, please contact your nearest licensed blood bank or hospital directly, or use our <a href="e_a.html" class="btn-link">Emergency Request</a> page.</p>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><i class="fas fa-tint blood-icon"></i> BloodLife</div>
+        <p class="footer-tagline">Connecting donors, hospitals and patients — one donation at a time.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul><li><a href="about_us.html">About</a></li><li><a href="contact_us.html">Contact</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul><li><a href="privacy_p.html">Privacy Policy</a></li><li><a href="terms_c.html">Terms</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get Involved</h4>
+        <ul><li><a href="register.html">Register as Donor</a></li><li><a href="f_d.html">Find Donors</a></li><li><a href="e_a.html">Emergency Request</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 BloodLife. All rights reserved.</div>
+  </footer>
+
+  <script src="../SCRIPT/script.js"></script>
+</body>
+</html>

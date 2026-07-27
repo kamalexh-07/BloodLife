@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms and Conditions - BloodLife</title>
+  <link rel="stylesheet" href="../CSS/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+
+</head>
+<body>
+  <!-- ===================== Title bar: hamburger (left) / logo (center) / auth-or-avatar (right) ===================== -->
+  <div class="title-bar">
+    <div class="hamburger-container">
+      <button id="menuBtn" class="hamburger" aria-label="Toggle menu" aria-controls="mySidebar" aria-expanded="false">
+        <span class="hamburger-inner">☰</span>
+      </button>
+    </div>
+
+    <div class="title-text">
+      <i class="fas fa-tint blood-icon"></i> BloodLife
+    </div>
+
+    <div class="title-bar-right">
+      <div class="auth-buttons" id="authButtons">
+        <button id="loginBtn"><i class="fas fa-sign-in-alt"></i> <span>Login</span></button>
+        <button id="signupBtn"><i class="fas fa-user-plus"></i> <span>Sign Up</span></button>
+      </div>
+
+      <div class="profile-menu" id="profileMenu">
+        <button id="profileAvatar" class="profile-avatar" aria-haspopup="true" aria-expanded="false" aria-label="Open profile menu">U</button>
+        <div class="dropdown-menu" id="dropdownMenu" role="menu">
+          <div class="dropdown-header">
+            <div class="dropdown-name" id="dropdownName">User Name</div>
+            <div class="dropdown-email" id="dropdownEmail">user@email.com</div>
+          </div>
+          <button id="dropdownDashboard" role="menuitem"><i class="fas fa-tachometer-alt"></i> Dashboard</button>
+          <a href="profile.html" role="menuitem"><i class="fas fa-user"></i> My Profile</a>
+          <button id="logoutItem" class="logout-item" role="menuitem"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== Sidebar — all navigation lives here ===================== -->
+  <nav id="mySidebar" class="sidebar" role="navigation" aria-hidden="true">
+    <button id="closeSidebarBtn" aria-label="Close sidebar" class="close-btn">&times;</button>
+    <div class="sidebar-brand"><i class="fas fa-tint blood-icon"></i> BloodLife</div>
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="register.html"><i class="fas fa-user-plus"></i> Register as Donor</a></li>
+      <li><a href="f_d.html"><i class="fas fa-search"></i> Find Donor</a></li>
+      <li><a href="e_a.html"><i class="fas fa-ambulance"></i> Emergency Request</a></li>
+      <li><a href="about_us.html"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a href="contact_us.html"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <ul id="sidebarLoggedOut">
+      <li><a href="login.html" id="sidebarLoginLink"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+      <li><a href="register.html" id="sidebarSignupLink"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+    </ul>
+    <ul id="sidebarLoggedIn" style="display:none;">
+      <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+      <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+      <li><a href="#" id="sidebarLogoutLink" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-shell">
+    <div class="page-header">
+      <h1>Terms and Conditions</h1>
+      <p>Please read these terms carefully before using BloodLife.</p>
+    </div>
+    <div class="content-block">
+      <p>Welcome to BloodLife. By accessing or using our platform, you agree to comply with the following Terms and Conditions. Please read them carefully.</p>
+
+      <h2>1. Platform Purpose</h2>
+      <p>BloodLife connects voluntary blood donors with individuals or licensed blood banks in need of blood, in compliance with the Drugs and Cosmetics Act, 1940, and National Blood Transfusion Council (NBTC) guidelines. We do not collect, store, or distribute blood ourselves.</p>
+
+      <h2>2. Voluntary Donations Only</h2>
+      <p>All blood donations facilitated through our platform must be voluntary and non-commercial, as mandated by Indian law (Supreme Court, 1996). Buying, selling, or offering payment for blood is strictly prohibited and may result in legal action, including imprisonment and fines.</p>
+
+      <h2>3. User Responsibilities</h2>
+      <ul>
+        <li>Provide accurate information (e.g., blood group, contact details, location) when registering or searching for donors.</li>
+        <li>Ensure eligibility for donation per NBTC guidelines: age 18-65, weight &ge;45 kg, hemoglobin &ge;12.5 g/dL, no transmissible diseases (e.g., HIV, hepatitis), and at least 3 months since last donation.</li>
+        <li>Coordinate donations only through licensed blood banks or hospitals to ensure safety and compliance.</li>
+        <li>Report any suspicious activity, such as attempts to buy/sell blood, to support@bloodlife.com.</li>
+      </ul>
+
+      <h2>4. Data Privacy</h2>
+      <p>We collect and process personal data in accordance with the Digital Personal Data Protection Act, 2023 (DPDP Act). For details, refer to our <a href="privacy_p.html" class="btn-link">Privacy Policy</a>.</p>
+
+      <h2>5. Non-Discrimination</h2>
+      <p>We promote inclusivity and comply with Indian laws. Users must not discriminate based on gender, caste, religion, or other protected categories when using the platform.</p>
+
+      <h2>6. Limitation of Liability</h2>
+      <p>BloodLife is not responsible for:</p>
+      <ul>
+        <li>Actions or inactions of donors, recipients, or blood banks.</li>
+        <li>Misuse of the platform, including violations of Indian law.</li>
+        <li>Inaccuracies in user-provided information or outcomes of donation requests.</li>
+      </ul>
+      <p>All donations must be processed through licensed blood banks to ensure safety and legality.</p>
+
+      <h2>7. Termination of Access</h2>
+      <p>We reserve the right to suspend or terminate access to the platform for users who violate these terms, engage in illegal activities, or misuse the platform.</p>
+
+      <h2>8. Governing Law</h2>
+      <p>These terms are governed by the laws of India. Any disputes will be subject to the jurisdiction of courts in Chennai, Tamil Nadu.</p>
+
+      <p><strong>Disclaimer:</strong> BloodLife is a facilitator and not a medical or blood bank service. We do not guarantee the availability of donors or the outcome of donation requests. Users are responsible for ensuring compliance with all applicable laws.</p>
+      <p>For questions or to report violations, contact us at <a href="contact_us.html" class="btn-link">support@bloodlife.com</a>.</p>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><i class="fas fa-tint blood-icon"></i> BloodLife</div>
+        <p class="footer-tagline">Connecting donors, hospitals and patients — one donation at a time.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul><li><a href="about_us.html">About</a></li><li><a href="contact_us.html">Contact</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul><li><a href="privacy_p.html">Privacy Policy</a></li><li><a href="terms_c.html">Terms</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get Involved</h4>
+        <ul><li><a href="register.html">Register as Donor</a></li><li><a href="f_d.html">Find Donors</a></li><li><a href="e_a.html">Emergency Request</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 BloodLife. All rights reserved.</div>
+  </footer>
+
+  <script src="../SCRIPT/script.js"></script>
+</body>
+</html>

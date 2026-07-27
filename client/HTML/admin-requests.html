@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Requests — BloodLife Admin</title>
+  <link rel="stylesheet" href="../CSS/admin.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="admin-mobile-bar">
+    <button type="button" id="adminMenuBtn" class="btn btn-outline btn-sm" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    <strong style="font-family:var(--font-display);">BloodLife Admin</strong>
+    <span></span>
+  </div>
+  <div id="adminOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:45;" class="admin-overlay"></div>
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="admin-brand">
+        <span class="admin-brand-badge">BL</span>
+        <span>BloodLife</span>
+      </div>
+      <ul class="admin-nav">
+        <li><a href="admin-dashboard.html" data-nav="dashboard"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="admin-donors.html" data-nav="donors"><i class="fas fa-users"></i> Donors</a></li>
+        <li><a href="admin-requests.html" data-nav="requests"><i class="fas fa-tint"></i> Requests</a></li>
+        <li><a href="admin-profile.html" data-nav="profile"><i class="fas fa-user-shield"></i> Profile</a></li>
+      </ul>
+      <button type="button" id="adminLogoutBtn" class="btn btn-outline" style="width:100%;margin-top:12px;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </aside>
+    <div class="admin-main">
+
+      <div class="admin-topbar">
+        <div><h1>Blood Requests</h1><p>Review and update emergency requests</p></div>
+      </div>
+      <div class="panel">
+        <div class="panel-body">
+          <div class="filters">
+            <div class="field" style="flex:2;"><label for="q">Search</label><input type="search" id="q" placeholder="Patient, hospital, district, phone" /></div>
+            <div class="field"><label for="status">Status</label>
+              <select id="status"><option value="">All</option><option>Open</option><option>Urgent</option><option>Fulfilled</option></select>
+            </div>
+            <div class="field"><label for="bloodGroup">Blood group</label>
+              <select id="bloodGroup"><option value="">All</option>
+                <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+                <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+              </select>
+            </div>
+            <div class="field"><label for="district">District</label><input type="text" id="district" placeholder="District" /></div>
+            <button type="button" class="btn btn-primary" id="searchBtn">Search</button>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Patient</th><th>Blood</th><th>District</th><th>Hospital</th><th>Status</th><th>Created</th><th>Actions</th></tr></thead>
+              <tbody id="requestsBody"><tr><td colspan="7" class="empty-state">Loading…</td></tr></tbody>
+            </table>
+          </div>
+          <div class="pagination">
+            <span id="pageInfo">–</span>
+            <div class="pages">
+              <button type="button" class="btn btn-outline btn-sm" id="prevPage">Prev</button>
+              <button type="button" class="btn btn-outline btn-sm" id="nextPage">Next</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div id="adminToast" class="toast" role="status"></div>
+  <script src="../SCRIPT/admin-common.js"></script>
+  <script src="../SCRIPT/admin-requests.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "bloodlife-server",
+  "version": "1.1.0",
+  "description": "BloodLife API server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "seed-admin": "node scripts/seed-admin.js"
+  },
+  "keywords": ["bloodlife", "donation"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.18.2",
+    "nodemailer": "^6.9.14"
+  }
+}

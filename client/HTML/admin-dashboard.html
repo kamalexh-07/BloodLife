@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — BloodLife Admin</title>
+  <link rel="stylesheet" href="../CSS/admin.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="admin-mobile-bar">
+    <button type="button" id="adminMenuBtn" class="btn btn-outline btn-sm" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    <strong style="font-family:var(--font-display);">BloodLife Admin</strong>
+    <span></span>
+  </div>
+  <div id="adminOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:45;" class="admin-overlay"></div>
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="admin-brand">
+        <span class="admin-brand-badge">BL</span>
+        <span>BloodLife</span>
+      </div>
+      <ul class="admin-nav">
+        <li><a href="admin-dashboard.html" data-nav="dashboard"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="admin-donors.html" data-nav="donors"><i class="fas fa-users"></i> Donors</a></li>
+        <li><a href="admin-requests.html" data-nav="requests"><i class="fas fa-tint"></i> Requests</a></li>
+        <li><a href="admin-profile.html" data-nav="profile"><i class="fas fa-user-shield"></i> Profile</a></li>
+      </ul>
+      <button type="button" id="adminLogoutBtn" class="btn btn-outline" style="width:100%;margin-top:12px;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </aside>
+    <div class="admin-main">
+
+      <div class="admin-topbar">
+        <div>
+          <h1>Admin Dashboard</h1>
+          <p>Overview of donors and blood requests</p>
+        </div>
+      </div>
+      <div class="stats-grid" id="statsGrid">
+        <div class="stat-card"><p class="stat-card__label">Total Donors</p><p class="stat-card__value" id="statTotalDonors">–</p></div>
+        <div class="stat-card stat-card--green"><p class="stat-card__label">Available</p><p class="stat-card__value" id="statAvailable">–</p></div>
+        <div class="stat-card"><p class="stat-card__label">Unavailable</p><p class="stat-card__value" id="statUnavailable">–</p></div>
+        <div class="stat-card stat-card--crimson"><p class="stat-card__label">Total Requests</p><p class="stat-card__value" id="statTotalReq">–</p></div>
+        <div class="stat-card stat-card--amber"><p class="stat-card__label">Open</p><p class="stat-card__value" id="statOpen">–</p></div>
+        <div class="stat-card stat-card--green"><p class="stat-card__label">Fulfilled</p><p class="stat-card__value" id="statFulfilled">–</p></div>
+      </div>
+      <div class="panel">
+        <div class="panel-header"><h2>Request status</h2></div>
+        <div class="panel-body">
+          <div class="chart-bars" id="statusChart" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="admin-two-col">
+        <div class="panel">
+          <div class="panel-header"><h2>Recent registrations</h2><a href="admin-donors.html" class="btn btn-outline btn-sm">View all</a></div>
+          <div class="panel-body table-wrap">
+            <table class="data-table"><thead><tr><th>Name</th><th>Blood</th><th>District</th><th>Status</th></tr></thead>
+            <tbody id="recentDonorsBody"><tr><td colspan="4" class="empty-state">Loading…</td></tr></tbody></table>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header"><h2>Recent blood requests</h2><a href="admin-requests.html" class="btn btn-outline btn-sm">View all</a></div>
+          <div class="panel-body table-wrap">
+            <table class="data-table"><thead><tr><th>Patient</th><th>Blood</th><th>District</th><th>Status</th></tr></thead>
+            <tbody id="recentRequestsBody"><tr><td colspan="4" class="empty-state">Loading…</td></tr></tbody></table>
+          </div>
+        </div>
+      </div>
+      <style>@media(max-width:800px){.admin-two-col{grid-template-columns:1fr!important;}}</style>
+
+    </div>
+  </div>
+  <div id="adminToast" class="toast" role="status"></div>
+  <script src="../SCRIPT/admin-common.js"></script>
+  <script src="../SCRIPT/admin-dashboard.js"></script>
+</body>
+</html>

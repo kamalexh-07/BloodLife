@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BloodLife - Blood Donation Management System</title>
+  <meta name="description" content="BloodLife connects donors, hospitals and patients in real time. Register as a donor, find a match, or request blood in an emergency." />
+
+  <link rel="stylesheet" href="../CSS/style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+
+  <!-- ===================== Title bar: hamburger (left) / logo (center) / auth-or-avatar (right) ===================== -->
+  <div class="title-bar">
+    <div class="hamburger-container">
+      <button
+        id="menuBtn"
+        class="hamburger"
+        aria-label="Toggle menu"
+        aria-controls="mySidebar"
+        aria-expanded="false"
+      >
+        <span class="hamburger-inner">☰</span>
+      </button>
+    </div>
+
+    <div class="title-text">
+      <i class="fas fa-tint blood-icon"></i> BloodLife
+    </div>
+
+    <div class="title-bar-right">
+      <!-- Shown when logged out -->
+      <div class="auth-buttons" id="authButtons">
+        <button id="loginBtn"><i class="fas fa-sign-in-alt"></i> <span>Login</span></button>
+        <button id="signupBtn"><i class="fas fa-user-plus"></i> <span>Sign Up</span></button>
+      </div>
+
+      <!-- Shown when logged in: avatar + glassmorphism dropdown -->
+      <div class="profile-menu" id="profileMenu">
+        <button
+          id="profileAvatar"
+          class="profile-avatar"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-label="Open profile menu"
+        >U</button>
+
+        <div class="dropdown-menu" id="dropdownMenu" role="menu">
+          <div class="dropdown-header">
+            <div class="dropdown-name" id="dropdownName">User Name</div>
+            <div class="dropdown-email" id="dropdownEmail">user@email.com</div>
+          </div>
+          <button id="dropdownDashboard" role="menuitem">
+            <i class="fas fa-tachometer-alt"></i> Dashboard
+          </button>
+          <a href="profile.html" role="menuitem">
+            <i class="fas fa-user"></i> My Profile
+          </a>
+          <button id="logoutItem" class="logout-item" role="menuitem">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== Sidebar — all navigation lives here ===================== -->
+  <nav id="mySidebar" class="sidebar" role="navigation" aria-hidden="true">
+    <button id="closeSidebarBtn" aria-label="Close sidebar" class="close-btn">&times;</button>
+
+    <div class="sidebar-brand">
+      <i class="fas fa-tint blood-icon"></i> BloodLife
+    </div>
+
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="register.html"><i class="fas fa-user-plus"></i> Register as Donor</a></li>
+      <li><a href="f_d.html"><i class="fas fa-search"></i> Find Donor</a></li>
+      <li><a href="e_a.html"><i class="fas fa-ambulance"></i> Emergency Request</a></li>
+      <li><a href="about_us.html"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a href="contact_us.html"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+
+    <div class="sidebar-divider"></div>
+
+    <!-- Shown when logged out -->
+    <ul id="sidebarLoggedOut">
+      <li><a href="login.html" id="sidebarLoginLink"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+      <li><a href="register.html" id="sidebarSignupLink"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+    </ul>
+
+    <!-- Shown when logged in -->
+    <ul id="sidebarLoggedIn" style="display:none;">
+      <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+      <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+      <li><a href="#" id="sidebarLogoutLink" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===================== Main Content ===================== -->
+  <div class="main-content">
+
+    <!-- Hero slider: exactly 3 slides -->
+    <div class="slider-container">
+      <div class="slider" id="heroSlider">
+        <div class="slides" id="slides">
+          <div class="slide">
+            <img src="../assets/images/slide1.png" alt="Donor giving blood" />
+            <div class="slide-content">
+              <h2>Donate Blood, Save Lives</h2>
+              <p>One donation can save up to three lives.</p>
+              <a class="slide-cta" href="register.html"><i class="fas fa-tint blood-icon" style="color:inherit;"></i> Become a Donor</a>
+            </div>
+          </div>
+          <div class="slide">
+            <img src="../assets/images/slide2.png" alt="Find blood donors near you" />
+            <div class="slide-content">
+              <h2>Find Blood Donors Near You</h2>
+              <p>Search verified blood donors using blood group and location.</p>
+              <a class="slide-cta" href="f_d.html"><i class="fas fa-search"></i> Find Donors</a>
+            </div>
+          </div>
+          <div class="slide">
+            <img src="../assets/images/slide3.png" alt="Emergency blood request" />
+            <div class="slide-content">
+              <h2>Need Blood Urgently?</h2>
+              <p>Create an emergency request and connect with nearby donors instantly.</p>
+              <a class="slide-cta" href="e_a.html"><i class="fas fa-ambulance"></i> Request Blood</a>
+            </div>
+          </div>
+        </div>
+        <button id="prev" class="btn" aria-label="Previous slide">&#10094;</button>
+        <button id="next" class="btn" aria-label="Next slide">&#10095;</button>
+        <div class="dots" id="dots"></div>
+      </div>
+    </div>
+
+    <!-- Call To Action -->
+    <div class="cta-section">
+      <h2>Ready to Save a Life?</h2>
+      <a class="cta-button" href="register.html"><i class="fas fa-tint"></i> Become a Donor</a>
+    </div>
+
+    <!-- Action row (kept for existing backend hooks) -->
+    <div class="row">
+      <button id="search-btn"><i class="fas fa-search"></i> Search Donors</button>
+      <button id="register-btn"><i class="fas fa-tint blood-icon"></i> Register as Donor</button>
+      <button id="request-btn"><i class="fas fa-ambulance"></i> Request Blood</button>
+    </div>
+
+    <!-- Why Donate Blood — feature cards -->
+    <div class="section-heading">
+      <h2>Why Donate Blood?</h2>
+      <p>Every two seconds, someone needs blood. Join a community built to help patients in emergencies, surgeries, and chronic illnesses.</p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-tint"></i></div>
+        <h3>Save Lives</h3>
+        <p>A single donation can save up to three lives in critical need.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-heart"></i></div>
+        <h3>Help Hospitals</h3>
+        <p>Keep local blood banks stocked for surgeries and emergencies.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-handshake"></i></div>
+        <h3>Build Community</h3>
+        <p>Join a verified network of donors and recipients who look out for each other.</p>
+      </div>
+    </div>
+
+    <!-- Facts — stat cards -->
+    <div class="facts-section">
+      <div class="blood-facts">
+        <div class="fact">
+          <i class="fas fa-tint blood-icon"></i>
+          <p>1 Donation = 3 Lives</p>
+        </div>
+        <div class="fact">
+          <i class="fas fa-heartbeat"></i>
+          <p>Blood Needed Every 2 Seconds</p>
+        </div>
+        <div class="fact">
+          <i class="fas fa-hospital"></i>
+          <p>Thousands of Patients Need Blood Daily</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== Footer ===================== -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><i class="fas fa-tint blood-icon"></i> BloodLife</div>
+        <p class="footer-tagline">Connecting donors, hospitals and patients — one donation at a time.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about_us.html">About</a></li>
+          <li><a href="contact_us.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy_p.html">Privacy Policy</a></li>
+          <li><a href="terms_c.html">Terms</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get Involved</h4>
+        <ul>
+          <li><a href="register.html">Register as Donor</a></li>
+          <li><a href="f_d.html">Find Donors</a></li>
+          <li><a href="e_a.html">Emergency Request</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 BloodLife. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="../SCRIPT/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register as Donor - BloodLife</title>
+  <link rel="stylesheet" href="../CSS/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+
+</head>
+<body>
+  <!-- ===================== Title bar: hamburger (left) / logo (center) / auth-or-avatar (right) ===================== -->
+  <div class="title-bar">
+    <div class="hamburger-container">
+      <button id="menuBtn" class="hamburger" aria-label="Toggle menu" aria-controls="mySidebar" aria-expanded="false">
+        <span class="hamburger-inner">☰</span>
+      </button>
+    </div>
+
+    <div class="title-text">
+      <i class="fas fa-tint blood-icon"></i> BloodLife
+    </div>
+
+    <div class="title-bar-right">
+      <div class="auth-buttons" id="authButtons">
+        <button id="loginBtn"><i class="fas fa-sign-in-alt"></i> <span>Login</span></button>
+        <button id="signupBtn"><i class="fas fa-user-plus"></i> <span>Sign Up</span></button>
+      </div>
+
+      <div class="profile-menu" id="profileMenu">
+        <button id="profileAvatar" class="profile-avatar" aria-haspopup="true" aria-expanded="false" aria-label="Open profile menu">U</button>
+        <div class="dropdown-menu" id="dropdownMenu" role="menu">
+          <div class="dropdown-header">
+            <div class="dropdown-name" id="dropdownName">User Name</div>
+            <div class="dropdown-email" id="dropdownEmail">user@email.com</div>
+          </div>
+          <button id="dropdownDashboard" role="menuitem"><i class="fas fa-tachometer-alt"></i> Dashboard</button>
+          <a href="profile.html" role="menuitem"><i class="fas fa-user"></i> My Profile</a>
+          <button id="logoutItem" class="logout-item" role="menuitem"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== Sidebar — all navigation lives here ===================== -->
+  <nav id="mySidebar" class="sidebar" role="navigation" aria-hidden="true">
+    <button id="closeSidebarBtn" aria-label="Close sidebar" class="close-btn">&times;</button>
+    <div class="sidebar-brand"><i class="fas fa-tint blood-icon"></i> BloodLife</div>
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="register.html"><i class="fas fa-user-plus"></i> Register as Donor</a></li>
+      <li><a href="f_d.html"><i class="fas fa-search"></i> Find Donor</a></li>
+      <li><a href="e_a.html"><i class="fas fa-ambulance"></i> Emergency Request</a></li>
+      <li><a href="about_us.html"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a href="contact_us.html"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <ul id="sidebarLoggedOut">
+      <li><a href="login.html" id="sidebarLoginLink"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+      <li><a href="register.html" id="sidebarSignupLink"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+    </ul>
+    <ul id="sidebarLoggedIn" style="display:none;">
+      <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+      <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+      <li><a href="#" id="sidebarLogoutLink" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- Success Modal -->
+  <div id="successModal" class="hidden" style="position:fixed; inset:0; background:rgba(35,35,38,0.5); display:flex; align-items:center; justify-content:center; z-index:500; padding:1rem;" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+    <div class="card" style="max-width:420px; width:100%;">
+      <h3 id="modal-title" style="font-family:var(--font-display); font-size:1.2rem; margin-bottom:0.5rem;">Success!</h3>
+      <p style="color:var(--color-ink-soft); font-size:0.92rem; margin-bottom:1.2rem;">Thank you for registering as a blood donor! We will contact you shortly.</p>
+      <button onclick="closeModal()" class="btn btn-primary">Close</button>
+    </div>
+  </div>
+
+  <div class="page-shell">
+    <div class="page-header">
+      <h1><i class="fas fa-tint blood-icon"></i> Donor Registration</h1>
+      <p>Join our community of blood donors and help save lives today.</p>
+    </div>
+
+    <div class="contact-grid register-grid" style="align-items:start;">
+      <!-- Left: Form -->
+      <div class="card">
+        <form id="registrationForm" novalidate>
+
+          <h3 style="font-size:1.1rem; margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:1px solid var(--color-sand);">Personal Information</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="firstName">First Name <span class="required">*</span></label>
+              <input type="text" id="firstName" name="firstName" class="form-input" required aria-describedby="firstName-error">
+              <p id="firstName-error" class="error-message hidden"></p>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lastName">Last Name <span class="required">*</span></label>
+              <input type="text" id="lastName" name="lastName" class="form-input" required aria-describedby="lastName-error">
+              <p id="lastName-error" class="error-message hidden"></p>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address <span class="required">*</span></label>
+              <input type="email" id="email" name="email" class="form-input" required aria-describedby="email-error">
+              <p id="email-error" class="error-message hidden"></p>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="phone">Phone Number <span class="required">*</span></label>
+              <input type="tel" id="phone" name="phone" class="form-input" required aria-describedby="phone-error">
+              <div class="checkbox-group" style="margin-top:0.4rem;">
+                <label class="checkbox-label"><input type="checkbox" id="sameAsWhatsapp" name="sameAsWhatsapp"> Same as WhatsApp number</label>
+              </div>
+              <p id="phone-error" class="error-message hidden"></p>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="whatsapp">WhatsApp Number <span class="required">*</span></label>
+              <input type="tel" id="whatsapp" name="whatsapp" class="form-input" required aria-describedby="whatsapp-error">
+              <p id="whatsapp-error" class="error-message hidden"></p>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="dob">Date of Birth <span class="required">*</span></label>
+              <input type="date" id="dob" name="dob" class="form-input" required aria-describedby="dob-error">
+              <p id="dob-error" class="error-message hidden"></p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="bloodType">Blood Type <span class="required">*</span></label>
+            <select id="bloodType" name="bloodType" class="form-input" required aria-describedby="bloodType-error">
+              <option value="">Select your blood type</option>
+              <option value="A+">A+</option><option value="A-">A-</option>
+              <option value="B+">B+</option><option value="B-">B-</option>
+              <option value="AB+">AB+</option><option value="AB-">AB-</option>
+              <option value="O+">O+</option><option value="O-">O-</option>
+            </select>
+            <p id="bloodType-error" class="error-message hidden"></p>
+          </div>
+
+          <h3 style="font-size:1.1rem; margin:1.5rem 0 1rem; padding-bottom:0.5rem; border-bottom:1px solid var(--color-sand);">Address Information</h3>
+          <div class="form-group">
+            <label class="form-label" for="streetAddress">Street Address <span class="required">*</span></label>
+            <input type="text" id="streetAddress" name="streetAddress" class="form-input" required aria-describedby="streetAddress-error">
+            <p id="streetAddress-error" class="error-message hidden"></p>
+          </div>
+
+          <div class="form-row" style="grid-template-columns:1fr 1fr 1fr;">
+            <div class="form-group">
+              <label class="form-label" for="country">Country <span class="required">*</span></label>
+              <select id="country" name="country" class="form-input" required aria-describedby="country-error">
+                <option value="India" selected>India</option>
+              </select>
+              <p id="country-error" class="error-message hidden"></p>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="state">State/Province <span class="required">*</span></label>
+              <select id="state" name="state" class="form-input" required aria-describedby="state-error" disabled>
+                <option value="">Select your state/province</option>
+              </select>
+              <p id="state-error" class="error-message hidden"></p>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="district">District <span class="required">*</span></label>
+              <select id="district" name="district" class="form-input" required aria-describedby="district-error" disabled>
+                <option value="">Select your district</option>
+              </select>
+              <p id="district-error" class="error-message hidden"></p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="pincode">Pincode/Zip Code <span class="required">*</span></label>
+            <input type="text" id="pincode" name="pincode" class="form-input" required aria-describedby="pincode-error">
+            <p id="pincode-error" class="error-message hidden"></p>
+          </div>
+
+          <h3 style="font-size:1.1rem; margin:1.5rem 0 1rem; padding-bottom:0.5rem; border-bottom:1px solid var(--color-sand);">Account Security</h3>
+          <div class="form-row">
+            <div class="form-group" style="position:relative;">
+              <label class="form-label" for="password">Password <span class="required">*</span></label>
+              <input type="password" id="password" name="password" class="form-input" required aria-describedby="password-error">
+              <button type="button" onclick="togglePassword('password')" style="position:absolute; right:0.7rem; top:2.3rem; color:var(--color-ink-soft);" aria-label="Toggle password visibility">
+                <svg id="password-eye" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+              </button>
+              <p id="password-error" class="error-message hidden"></p>
+            </div>
+            <div class="form-group" style="position:relative;">
+              <label class="form-label" for="confirmPassword">Confirm Password <span class="required">*</span></label>
+              <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" required aria-describedby="confirmPassword-error">
+              <button type="button" onclick="togglePassword('confirmPassword')" style="position:absolute; right:0.7rem; top:2.3rem; color:var(--color-ink-soft);" aria-label="Toggle confirm password visibility">
+                <svg id="confirmPassword-eye" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+              </button>
+              <p id="confirmPassword-error" class="error-message hidden"></p>
+            </div>
+          </div>
+
+          <h3 style="font-size:1.1rem; margin:1.5rem 0 1rem; padding-bottom:0.5rem; border-bottom:1px solid var(--color-sand);">Consent &amp; Notifications</h3>
+          <div class="form-group">
+            <div class="checkbox-container" style="padding:0.7rem; border:1px solid var(--color-sand); border-radius:8px;">
+              <input type="checkbox" id="terms" name="terms" required aria-describedby="terms-error">
+              <label for="terms" style="font-size:0.88rem; color:var(--color-ink-soft);">I agree to the <a href="terms_c.html" class="btn-link">Terms and Conditions</a> and <a href="privacy_p.html" class="btn-link">Privacy Policy</a> <span class="required">*</span></label>
+            </div>
+            <p id="terms-error" class="error-message hidden"></p>
+          </div>
+          <div class="form-group">
+            <div class="checkbox-container" style="padding:0.7rem; border:1px solid var(--color-sand); border-radius:8px;">
+              <input type="checkbox" id="dataConsent" name="dataConsent" required aria-describedby="dataConsent-error">
+              <label for="dataConsent" style="font-size:0.88rem; color:var(--color-ink-soft);">I consent to my data being processed for blood donation purposes in accordance with GDPR <span class="required">*</span></label>
+            </div>
+            <p id="dataConsent-error" class="error-message hidden"></p>
+          </div>
+          <div class="checkbox-container" style="padding:0.7rem; border:1px solid var(--color-sand); border-radius:8px; margin-bottom:0.75rem;">
+            <input type="checkbox" id="donationOpportunities" name="donationOpportunities">
+            <label for="donationOpportunities" style="font-size:0.88rem; color:var(--color-ink-soft);">Send me donation opportunities and health tips</label>
+          </div>
+          <div class="checkbox-container" style="padding:0.7rem; border:1px solid var(--color-sand); border-radius:8px; margin-bottom:0.75rem;">
+            <input type="checkbox" id="emergencyContact" name="emergencyContact">
+            <label for="emergencyContact" style="font-size:0.88rem; color:var(--color-ink-soft);">Contact me for emergency blood needs</label>
+          </div>
+          <p id="recaptcha-error" class="error-message hidden"></p>
+
+          <button type="submit" id="submitBtn" class="btn btn-primary btn-block" disabled style="margin-top:0.5rem;">
+            <span id="buttonText">Register as Blood Donor</span>
+            <div id="loadingSpinner" class="loader-spinner hidden"></div>
+          </button>
+          <p id="formMessage" class="hidden" style="text-align:center; margin-top:0.9rem; font-size:0.88rem;" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <!-- Right: Info -->
+      <div>
+        <div class="card" style="margin-bottom:1.25rem;">
+          <h3 style="font-size:1.1rem; margin-bottom:1rem;">Why Donate Blood?</h3>
+          <p style="font-size:0.9rem; color:var(--color-ink-soft); margin-bottom:0.7rem;"><i class="fas fa-check-circle blood-icon"></i> Every donation can save up to 3 lives.</p>
+          <p style="font-size:0.9rem; color:var(--color-ink-soft); margin-bottom:0.7rem;"><i class="fas fa-check-circle blood-icon"></i> Your body replaces donated blood within 24 hours.</p>
+          <p style="font-size:0.9rem; color:var(--color-ink-soft);"><i class="fas fa-check-circle blood-icon"></i> Blood cannot be manufactured — it only comes from donors.</p>
+        </div>
+
+        <div class="card" style="margin-bottom:1.25rem;">
+          <h3 style="font-size:1.1rem; margin-bottom:1rem;">Quick Facts</h3>
+          <div class="form-row" style="text-align:center;">
+            <div><p style="font-family:var(--font-display); font-size:1.6rem; color:var(--color-crimson); font-weight:700;">42%</p><p style="font-size:0.78rem; color:var(--color-ink-soft);">of population eligible to donate</p></div>
+            <div><p style="font-family:var(--font-display); font-size:1.6rem; color:var(--color-crimson); font-weight:700;">4-6</p><p style="font-size:0.78rem; color:var(--color-ink-soft);">weeks between donations</p></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="font-size:1.1rem; margin-bottom:1rem;">Already a Donor?</h3>
+          <button onclick="window.location.href='login.html'" class="btn btn-outline btn-block">Login to Your Account</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><i class="fas fa-tint blood-icon"></i> BloodLife</div>
+        <p class="footer-tagline">Connecting donors, hospitals and patients — one donation at a time.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul><li><a href="about_us.html">About</a></li><li><a href="contact_us.html">Contact</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul><li><a href="privacy_p.html">Privacy Policy</a></li><li><a href="terms_c.html">Terms</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get Involved</h4>
+        <ul><li><a href="register.html">Register as Donor</a></li><li><a href="f_d.html">Find Donors</a></li><li><a href="e_a.html">Emergency Request</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 BloodLife. All rights reserved.</div>
+  </footer>
+
+  <script src="../SCRIPT/script.js"></script>
+  <script src="../SCRIPT/locations-data.js"></script>
+  <script src="../SCRIPT/register.js" defer></script>
+</body>
+</html>
