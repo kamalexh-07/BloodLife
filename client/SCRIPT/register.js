@@ -1,6 +1,11 @@
 // Location data comes from locations-data.js (load that script before this one).
 // Fallback keeps Register usable if the shared file fails to load.
-const locationData = window.locationData || {
+// NOTE: do not redeclare with `const`/`let` here — locations-data.js already
+// declares a top-level `const locationData`, and since both files are loaded
+// as classic <script> tags on the same page, they share one global lexical
+// scope. A second top-level const/let with the same name throws:
+// "Uncaught SyntaxError: Identifier 'locationData' has already been declared."
+window.locationData = window.locationData || {
   India: {
     states: {
       "Tamil Nadu": window.TAMIL_NADU_DISTRICTS || []
@@ -55,8 +60,8 @@ const sameAsWhatsappCheckbox = document.getElementById('sameAsWhatsapp');
 // ✅ Country Change
 countrySelect.addEventListener('change', () => {
   const country = countrySelect.value;
-  if (country && locationData[country]) {
-    const states = Object.keys(locationData[country].states);
+  if (country && window.locationData[country]) {
+    const states = Object.keys(window.locationData[country].states);
     populateSelect('state', states, 'Select your state/province');
     stateSelect.disabled = false;
   } else {
@@ -71,8 +76,8 @@ countrySelect.addEventListener('change', () => {
 stateSelect.addEventListener('change', () => {
   const country = countrySelect.value;
   const state = stateSelect.value;
-  if (country && state && locationData[country].states[state]) {
-    populateSelect('district', locationData[country].states[state], 'Select your district');
+  if (country && state && window.locationData[country].states[state]) {
+    populateSelect('district', window.locationData[country].states[state], 'Select your district');
     districtSelect.disabled = false;
   } else {
     populateSelect('district', [], 'Select your district');
